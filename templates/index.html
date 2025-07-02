@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Stroke Prediction</h2>
+        <form action="{{ url_for('predict') }}" method="post">
+            <!-- Add input fields for all features in the dataset -->
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" required><br>
+            
+            <label for="hypertension">Hypertension:</label>
+            <input type="text" id="hypertension" name="hypertension" required><br>
+            
+            <label for="heart_disease">Heart Disease:</label>
+            <input type="text" id="heart_disease" name="heart_disease" required><br>
+            
+            <label for="avg_glucose_level">Average Glucose Level:</label>
+            <input type="text" id="avg_glucose_level" name="avg_glucose_level" required><br>
+            
+            <label for="bmi">BMI:</label>
+            <input type="text" id="bmi" name="bmi" required><br>
+            
+            <!-- Add more input fields as per your dataset features -->
+            
+            <input type="submit" value="Predict">
+        </form>
+        <div class="result">
+            {% if prediction_text %}
+                <h3>{{ prediction_text }}</h3>
+            {% endif %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
